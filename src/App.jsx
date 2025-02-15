@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 
 import { refreshUser } from "./redux/auth/operations";
-import { selectUserDataIsRefresh } from "./redux/auth/selectors";
+import { selectIsRefreshing } from "./redux/auth/selectors";
 
 const ContactsPage = lazy(() => import("./pages/ContactsPage/ContactsPage"));
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
@@ -20,7 +20,7 @@ import Layout from "./components/Layout/Layout";
 
 const App = () => {
   const dispatch = useDispatch();
-  const isRefreshing = useSelector(selectUserDataIsRefresh);
+  const isRefreshing = useSelector(selectIsRefreshing);
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
